@@ -1,0 +1,66 @@
+{# {% extends 'base.html.twig' %} #}
+{% block navbar %}
+
+        {{ include('admin/navbar.html.twig') }}
+
+{% endblock %}
+
+{% block title %}Hello AdminPizzaController!{% endblock %}
+
+{% block body %}
+{# {% block navbar %}
+{{ include('admin/_navbar.html.twig') }}
+{% endblock %} #}
+    
+ <div class="row">
+    <div>
+            <span> We are in : {{ _self }} </span> <br> 
+
+            Count all pizzas : {{ pizzas|length}}
+    </div>
+    <hr>
+        <h1> All Pizzas </h1>
+
+        <div class="container text-center">
+
+            {% for pizza in pizzas %}
+
+                <div class="card d-flex justify-content-center m-5 shadow rounded  bg-dark text-white">
+                    <div class="card-body">
+                        <div class="container my-5 text-center">
+
+                            <span> Pizza's id : {{ pizza.id }}</span>
+                            <h4> {{ pizza.name }} </h4>
+                                {% if pizza.imageUrl %}
+
+                                    <img class="card-img-top rounded" src="{{ pizza.imageUrl }}" alt="{{ pizza.name }}">
+
+                                {% endif %}
+
+                                    <span> {{pizza.description}} </span><br>
+                                    <p>Prix : {{ pizza.price }} €</p>
+
+                                     <hr>
+                                     
+                                    <button class="btn btn-outline-info"><a class="" href="{{ path('app_admin_pizza_update', {id: pizza.id }) }}">Modify</a> </button>
+
+                                    &nbsp&nbsp&nbsp&nbsp
+                                   
+                                    <button class="btn btn-outline-danger"><a class="" href="{{ path('app_admin_pizza_delete', {id: pizza.id }) }}">Delete</a> </button>
+                                   
+                            </div><!--/container-->
+                    </div><!--/card body -->
+                </div><!--/card-->
+
+            {% endfor %}
+        </div><!--/container-->
+
+</div><!--/ row-->
+
+{% endblock %}
+
+{% block footer %}
+
+        {{ include('admin/footer.html.twig') }}
+
+{% endblock %}

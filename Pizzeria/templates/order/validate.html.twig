@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello OrderController!{% endblock %}
+
+{% block body %}
+
+    <div>
+        <span> We are in : {{ _self }} </span> <br> 
+    </div>
+
+    <hr>
+                    <h1>Your order</h1>
+
+        <div class="container my-5 d-flex justify-content-center">
+            <div class="row"> 
+                <div class="col rounded shadow p-5 bg-light">
+
+                    <h3>Order received successfully !</h3>
+
+                    <p>Your order will be delivered shortly !</p>
+
+                    <p>Summary of your order :</p>
+
+                    <ul>
+                        {% for article in order.articles %}
+
+                            <li>
+                                {{ article.quantity }} x {{ article.pizza.name }} ({{ article.total }} €)  
+                            </li>
+
+                        {% endfor %}
+                    </ul>
+                    <p><b>&nbsp &nbsp&nbsp&nbsp Total :</b> {{ order.total }} €</p>
+                    </div>
+                
+
+                </div><!--/ row -->
+        </div><!--/ container -->
+
+{% endblock %}

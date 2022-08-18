@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+
+<span> We are in : {{ _self }} </span> 
+<hr>
+
+
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <h1>Register</h1>
+
+                  
+
+                        {{ form_start(form) }}
+
+                          <div class="form-group-row bg-light d-flex justify-content-center rounded shadow p-3">
+                            <div class="col-sm-6">
+
+                                {{ form_widget(form) }}
+
+                                <button type="submit" class="btn btn-primary">Submit</button>
+
+                            </div><!--/col-->
+                        </div><!--/row-->
+
+                        {{ form_end(form) }}
+
+                </div><!-- /col -->
+            </div><!--/ row -->
+        </div><!--/ container -->
+
+{% endblock %}

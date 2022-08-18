@@ -1,0 +1,55 @@
+{# {% extends 'base.html.twig' %} #}
+{% block navbar %}
+
+        {{ include('admin/navbar.html.twig') }}
+
+{% endblock %}
+
+{% block sub_title "New Pizza"  %}
+
+{% block body %}
+
+<span> We are in : {{ _self }} </span> 
+<hr>
+
+    <h1> {% block page_title 'New Pizza'  %} </h1>
+
+    <p>
+        <button class="btn btn-outline-info">
+            <a href = href="{{ path('app_admin_pizza_list') }}">
+                <i class= "fa-solid fa-circle-arrow-left"></i>
+                Return in the list
+            </a>
+        </button>
+    </p>
+
+    <div class="container m-5">
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <h1>Add a new pizza</h1>
+
+                         {{ form_start(form) }}
+                            <div class="form-group-row bg-dark text-white d-flex justify-content-center rounded shadow p-3">
+                                <div class="col-sm-6">
+
+                                    {{ form_widget(form) }}
+
+                                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+
+                                </div><!--/col-->
+                            </div><!--/row-->
+                         {{ form_end(form) }}
+
+                </div><!-- /col -->
+            </div><!--/ row -->
+    </div><!--/ container -->
+
+{% endblock %}
+
+{% block footer %}
+
+        {{ include('admin/footer.html.twig') }}
+
+{% endblock %}
+

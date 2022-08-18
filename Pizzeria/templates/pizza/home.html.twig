@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PizzaController!{% endblock %}
+
+{% block body %}
+
+ <div class="row">
+    <div>
+            <span> We are in : {{ _self }} </span> <br> 
+
+            Count all pizzas : {{ pizzas|length}}
+    </div>
+    <hr>
+        <h1> All Pizzas </h1>
+
+        <div class="container text-center">
+            {% for pizza in pizzas %}
+
+                <div class="card d-flex justify-content-center m-5 shadow rounded  bg-light">
+                    <div class="card-body">
+                        <div class="container my-5 text-center">
+
+                            <span> Pizza's id : {{ pizza.id }}</span>
+                            <h4> {{ pizza.name }} </h4>
+                                {% if pizza.imageUrl %}
+                                    {# <p>
+                                        <img src="{{ pizza.imageUrl }}" alt="{{ pizza.name }}" />
+                                    </p> #}
+                                    <img class="card-img-top rounded" src="{{ pizza.imageUrl }}" alt="{{ pizza.name }}">
+                                {% endif %}
+
+                                    <span> {{pizza.description}} </span><br>
+                                    <p>Prix : {{ pizza.price }} €</p>
+
+                                     <hr>
+                                     {# href="{{ path('app_cart_display')}}" #}
+                                        <button class="btn btn-outline-secondary"><a class="" href="{{ path('app_cart_addArticle', {id: pizza.id }) }}">Add to cart</a> </button>
+                                    </p>
+                                   
+                                    {# <button class="btn btn-outline-danger"><a class="" href="{{ path('pizza_delete', {'id': pizza.id }) }}">Delete</a> </button> #}
+                                    {# <button class="btn btn-outline-primary"><a href="{{ path('pizza_update', {'id': pizza.id }) }}">Update</a> </button>
+                        #}
+                            </div><!--/container-->
+                    </div><!--/card body -->
+                </div><!--/card-->
+
+            {% endfor %}
+        </div><!--/container-->
+
+</div><!--/ row-->
+
+{% endblock %}

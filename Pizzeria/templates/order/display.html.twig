@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello OrderController!{% endblock %}
+
+{% block body %}
+
+    <div>
+        <span> We are in : {{ _self }} </span> <br> 
+    </div>
+
+    <hr>
+    <div class="container my-5">
+        <div class="row">   
+
+            <h1>Your order</h1>
+
+                <div class="col">
+                    <ul>
+                        {% for article in app.user.cart.articles %}
+                    
+                            <li>
+                                {{ article.quantity }} x {{ article.pizza.name }} ({{ article.total }} €)
+                            </li>
+
+                        {% endfor %}
+                    </ul>
+
+                    <p><b>&nbsp &nbsp&nbsp&nbsp Total :</b> {{ app.user.cart.total }} € </p>
+
+                </div><!--/ col-->
+                <div class="col"></div>
+            </div><!--/ row -->
+
+            <div class="row">
+
+                {{ form_start(form) }}
+
+                    <h2>Your contact details :</h2>
+
+                <div class="form-group-row bg-light d-flex justify-content-center rounded shadow p-3">
+                    <div class="col-sm-6">
+
+                        {{ form_widget(form.address) }}
+
+                        <button class="btn btn-lg btn-primary mt-3" type="submit"> Confirm </button>
+
+                   </div><!--/col-->
+                </div><!--/row-->
+                    
+                <div class="form-group-row bg-light d-flex justify-content-center shadow mt-3 p-3">
+                    <div class="col-sm-6">
+
+                        <h2 class="mt-5">Your card :</h2>
+                        {# <p>Total : {{ app.user.cart.total }} €</p> #}
+                        <div class="mb-3">
+                            {{ form_row(form.cardNumber) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_row(form.expirationMonth) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_row(form.expirationYear) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_row(form.cvc) }}
+                        </div>
+                         <button class="btn btn-lg btn-primary mt-3" type="submit"> Submit </button>
+                         
+                    </div><!--/col-->
+                </div><!--/row-->
+
+                {{ form_end(form) }}
+            
+            
+            </div><!--/ row -->
+            
+    </div><!--/ container -->
+
+{% endblock %}

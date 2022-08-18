@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CartController!{% endblock %}
+
+{% block body %}
+  <div>
+     <span> We are in : {{ _self }} </span> <br> 
+ </div>
+    <hr>
+ <div class="row">
+
+    <h1>My cart</h1>
+   
+    <div class="container my-5 text-center">
+
+        {% if app.user.cart.articles|length == 0 %}
+            <p>Your cart is empty !</p>
+        {% else %}
+
+            {% for article in app.user.cart.articles %}
+
+                <div class="card d-flex justify-content-center m-5 shadow rounded  bg-light">
+                <div class="card-body">
+                <div class="container my-5 text-center">
+
+                    <img class="card-img-top rounded" src="{{ article.pizza.imageUrl }}" alt="{{ article.pizza.name }}">
+                    <h3>{{ article.pizza.name }}</h3>
+                    <p class="description">
+                        {{ article.pizza.description }}
+                    </p>
+
+                    <p>
+                        <h5>Price : {{ article.pizza.price }}</h5>
+                    </p>
+
+                    <div>
+                        <a class="btn btn-outline-success minus" href="{{path('app_cart_decrease', {id: article.id} )}}">
+                            <i class="fa-solid fa-circle-minus"></i>
+                        </a> &nbsp
+                        {# <p class="quantity"> #}
+                            {{ article.quantity }}
+                        {# </p> #}
+                        &nbsp
+                        <a class="btn btn-outline-success plus" href="{{ path('app_cart_increase', {id: article.id}) }}">
+                            <i class="fa-solid fa-circle-plus"></i>
+                        </a>
+                    </div>
+                   
+                    
+                    <hr>
+                       {# auto den to xreiazomai mallon alla dn doulevei thelei allo path mallon to path pou exei kai to plus #}
+
+                        {# <a class="btn btn-success" href="{{ path('app_cart_addArticle', {id: article.id }) }}">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <span>Add in your cart</span>
+                        </a>
+                     #}
+
+                      <div class="price">
+                        {{ article.total }} €
+                      </div>
+
+                      </div><!--/container-->
+                    </div><!--/card body -->
+                </div><!--/card-->
+            {% endfor %}
+
+            <h2>Total : {{ app.user.cart.total }} €</h2>
+            <p>
+                <a href="{{ path('app_order_display') }}" class="btn btn-primary">Validate</a>
+            </p>
+
+        {% endif %}
+    </div><!--/ row -->
+{% endblock %}

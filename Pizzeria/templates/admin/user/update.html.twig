@@ -1,0 +1,50 @@
+{# {% extends 'base.html.twig' %} #}
+{% block navbar %}
+
+        {{ include('admin/navbar.html.twig') }}
+
+{% endblock %}
+
+{% block body %}
+
+<span> We are in : {{ _self }} </span> 
+
+    <p class="m-4">
+        <button class="btn btn-outline-info">
+            <a href="{{ path('app_admin_user_list') }}">
+                <i class= "fa-solid fa-circle-arrow-left"></i>
+                Return in the list
+            </a>
+        </button>
+    </p>
+ <hr>
+
+    <div class="container my-5">
+            <div class="row ">
+                <div class="col-xs-12">
+
+                    <h1>Update a user</h1>
+
+                         {{ form_start(form) }}
+                            <div class="form-group-row d-flex justify-content-center rounded shadow p-3  bg-dark">
+                                <div class="col-sm-6 bg-light p-4 rounded">
+
+                                    {{ form_widget(form) }}
+
+                                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+
+                                </div><!--/col-->
+                            </div><!--/row-->
+                         {{ form_end(form) }}
+
+                </div><!-- /col -->
+            </div><!--/ row -->
+    </div><!--/ container -->
+
+{% endblock %}
+
+{% block footer %}
+
+        {{ include('admin/footer.html.twig') }}
+
+{% endblock %}
