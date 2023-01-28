@@ -1,6 +1,4 @@
 # Symfony_Project
 Symfony Pizzeria Project
 
-Project that was created for the module Symfony, part 
-of my education as "Web Developer and Web Mobile"
-at Doranco school (https://www.doranco.fr/) (3/2022 - 10/2022)
+Project that was created for practice module Symfony (3/2022 - 10/2022)
